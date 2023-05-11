@@ -1,0 +1,40 @@
+{
+    "name": "cash-iou",
+    "version": "0.1.0",
+    "description": "A simple PWA and SPA to track your lending money",
+    "main": "main.js",
+    "workspaces": [
+        "apps/*"
+    ],
+    "scripts": {
+        "dev": "turbo run dev",
+        "build": "turbo run build",
+        "start": "node apps/api/dist/main"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sayeed205/Cash-IOU.git"
+    },
+    "keywords": [
+        "SPA",
+        "PWA",
+        "monorepo",
+        "turbo",
+        "nestJS",
+        "reactJS",
+        "track",
+        "lending"
+    ],
+    "author": {
+        "name": "Sayed Ahmed",
+        "email": "sayeed205@gmail.com"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/sayeed205/Cash-IOU/issues"
+    },
+    "homepage": "https://github.com/sayeed205/Cash-IOU#readme",
+    "devDependencies": {
+        "turbo": "^1.9.3"
+    }
+}
