@@ -1,0 +1,134 @@
+[
+  {
+    "_id": "c1b0c424-494d-4920-b99f-b9415abe519a",
+    "colId": "72da743f-0e69-4866-bd34-1cba363db2fe",
+    "containerId": "8f8f699b-44b0-4997-adbc-a5a673ed9648",
+    "name": "Get all transactions",
+    "url": "{{URL}}/api/transactions",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-05-11T08:10:31.609Z",
+    "modified": "2023-05-14T02:57:47.413Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{token}}"
+    },
+    "tests": []
+  },
+  {
+    "_id": "efebe515-ea8a-4efd-b737-d20cc78468f4",
+    "colId": "72da743f-0e69-4866-bd34-1cba363db2fe",
+    "containerId": "8f8f699b-44b0-4997-adbc-a5a673ed9648",
+    "name": "Create new transaction",
+    "url": "{{URL}}/api/transactions",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2023-05-11T08:12:47.139Z",
+    "modified": "2023-05-14T13:59:34.412Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"roomId\": \"6460b71dd930d70d3b6d3e3f\",\n\n  \"amount\": 45,\n  \"note\":\"Biryani\",\n  \"date\": \"2023-05-11T08:15:57.370Z\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{token}}"
+    },
+    "tests": []
+  },
+  {
+    "_id": "3769791f-c9ca-4527-8ffc-97aad2c4c7a8",
+    "colId": "72da743f-0e69-4866-bd34-1cba363db2fe",
+    "containerId": "8f8f699b-44b0-4997-adbc-a5a673ed9648",
+    "name": "Get single transaction",
+    "url": "{{URL}}/api/transactions/6460bbe3ae5b419fac317f5",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2023-05-11T08:25:41.668Z",
+    "modified": "2023-05-14T13:55:50.487Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "fc7776b0-58f6-4a44-b0bf-2ac6698c513c",
+    "colId": "72da743f-0e69-4866-bd34-1cba363db2fe",
+    "containerId": "8f8f699b-44b0-4997-adbc-a5a673ed9648",
+    "name": "Update a transaction",
+    "url": "",
+    "method": "GET",
+    "sortNum": 50000,
+    "created": "2023-05-11T08:39:12.220Z",
+    "modified": "2023-05-11T08:39:12.220Z",
+    "headers": []
+  },
+  {
+    "_id": "79db397b-90c1-4f8c-b865-2a7b16dd2c2c",
+    "colId": "72da743f-0e69-4866-bd34-1cba363db2fe",
+    "containerId": "d51c1b96-b4d6-406b-bf7b-dda0d30f19df",
+    "name": "Signup",
+    "url": "{{URL}}/api/auth/signup",
+    "method": "POST",
+    "sortNum": 60000,
+    "created": "2023-05-12T10:20:49.185Z",
+    "modified": "2023-05-14T10:57:05.189Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Kaustav\",\n  \"phone\": \"+917602904560\",\n  \"password\": \"Abcd@1234\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "70d5bcf5-49bb-41b9-afa9-f7489f9f5f5e",
+    "colId": "72da743f-0e69-4866-bd34-1cba363db2fe",
+    "containerId": "d51c1b96-b4d6-406b-bf7b-dda0d30f19df",
+    "name": "Login",
+    "url": "{{URL}}/api/auth/login",
+    "method": "POST",
+    "sortNum": 70000,
+    "created": "2023-05-14T02:38:16.722Z",
+    "modified": "2023-05-14T02:57:31.347Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"phone\": \"+919851305775\",\n  \"password\": \"Abcd@1234\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{token}}"
+    },
+    "tests": []
+  },
+  {
+    "_id": "2d91ab50-ac1f-442f-866c-e743a7a03869",
+    "colId": "72da743f-0e69-4866-bd34-1cba363db2fe",
+    "containerId": "56b704b7-a33b-4d7b-adf3-f86adb44a808",
+    "name": "Create new room",
+    "url": "{{URL}}/api/transaction-room",
+    "method": "POST",
+    "sortNum": 80000,
+    "created": "2023-05-14T10:19:42.490Z",
+    "modified": "2023-05-14T10:57:31.397Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Kaustav Da\",\n  \"phone\": \"+919851305775\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{token}}"
+    },
+    "tests": []
+  }
+]

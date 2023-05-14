@@ -1,0 +1,20 @@
+[
+  {
+    "_id": "e3ea7689-d386-4fde-bb52-bebddaed16e5",
+    "name": "Cash-IOU",
+    "default": true,
+    "sortNum": 10000,
+    "created": "2023-05-11T08:08:40.797Z",
+    "modified": "2023-05-11T08:08:40.797Z",
+    "data": [
+      {
+        "name": "URL",
+        "value": "http://localhost:5000"
+      },
+      {
+        "name": "token",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ2MGI3MGRkOTMwZDcwZDNiNmQzZTM5IiwiaWF0IjoxNjg0MDU5OTE3LCJleHAiOjE2ODQ2NjQ3MTd9.2BzG7I-BIspuupmW2HYeCow-mP_ZlJBn6qVtAiUBLUw"
+      }
+    ]
+  }
+]
