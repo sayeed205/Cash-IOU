@@ -45,11 +45,11 @@
     "colId": "72da743f-0e69-4866-bd34-1cba363db2fe",
     "containerId": "8f8f699b-44b0-4997-adbc-a5a673ed9648",
     "name": "Get single transaction",
-    "url": "{{URL}}/api/transactions/6460bbe3ae5b419fac317f5",
+    "url": "{{URL}}/api/transactions/6460bbe3ae5b419fac317f5f",
     "method": "GET",
     "sortNum": 40000,
     "created": "2023-05-11T08:25:41.668Z",
-    "modified": "2023-05-14T14:58:58.202Z",
+    "modified": "2023-05-14T17:42:49.189Z",
     "headers": [],
     "params": [],
     "tests": []
