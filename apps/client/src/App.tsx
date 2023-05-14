@@ -35,7 +35,7 @@ function App() {
                 </a>
             </div>
             <h1>Vite + React + Nest</h1>
-            <h1>{greeting}</h1>
+            <h1>{greeting} From NestJS API</h1>
             <div className="card">
                 <button onClick={() => setCount((count) => count + 1)}>
                     count is {count}
