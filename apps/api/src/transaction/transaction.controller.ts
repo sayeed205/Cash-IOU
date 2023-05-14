@@ -16,6 +16,7 @@ import { Query as query } from 'express-serve-static-core';
 import { ObjectId } from 'mongoose';
 
 import { User } from 'src/auth/schemas/user.schema';
+import { ValidateMongoId } from 'src/pipes/validate-mongo-id';
 import { createTransactionDto, updateTransactionDto } from './dto';
 import { TransactionService } from './transaction.service';
 
@@ -48,7 +49,7 @@ export class TransactionController {
 
     @Get(':id')
     async getTransaction(
-        @Param('id')
+        @Param('id', ValidateMongoId)
         id: ObjectId,
     ) {
         return await this.transactionService.getTransaction(id);
@@ -56,7 +57,7 @@ export class TransactionController {
 
     @Patch(':id')
     async updateTransaction(
-        @Param('id')
+        @Param('id', ValidateMongoId)
         id: ObjectId,
         @Body()
         transaction: updateTransactionDto,
@@ -66,7 +67,7 @@ export class TransactionController {
 
     @Delete(':id')
     async deleteTransaction(
-        @Param('id')
+        @Param('id', ValidateMongoId)
         id: ObjectId,
     ) {
         return await this.transactionService.deleteTransaction(id);

@@ -1,8 +1,18 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import {
+    Body,
+    Controller,
+    Get,
+    Param,
+    Post,
+    Req,
+    UseGuards,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Request } from 'express';
 
+import { ObjectId } from 'mongoose';
 import { User } from 'src/auth/schemas/user.schema';
+import { ValidateMongoId } from 'src/pipes/validate-mongo-id';
 import { createTransactionRoomDto } from './dto';
 import { TransactionRoomService } from './transaction-room.service';
 
@@ -33,5 +43,8 @@ export class TransactionRoomController {
 
     @Get(':id')
     @UseGuards(AuthGuard())
-    async getTransactionRoom() {}
+    async getTransactionRoom(
+        @Param('id', ValidateMongoId)
+        id: ObjectId,
+    ) {}
 }
