@@ -6,6 +6,6 @@ import { MongoIdException } from 'src/exceptions/mongo-id.exception';
 export class ValidateMongoId implements PipeTransform<string> {
     transform(value: string) {
         if (isValidObjectId(value)) return value;
-        throw new MongoIdException();
+        throw new MongoIdException(value);
     }
 }
