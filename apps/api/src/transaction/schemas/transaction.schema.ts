@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 // import { Schema as MongooseSchema, ObjectId } from 'mongoose';
-import * as mongoose from 'mongoose';
+import { Types } from 'mongoose';
 
 import { User } from 'src/auth/schemas/user.schema';
 import { TransactionRoom } from 'src/transaction-room/schemas/transaction-room.schema';
@@ -14,10 +14,10 @@ export enum TransactionType {
 export class Transaction {
     @Prop({
         required: true,
-        type: mongoose.Schema.Types.ObjectId,
+        type: Types.ObjectId,
         ref: TransactionRoom.name,
     })
-    roomId: mongoose.Schema.Types.ObjectId;
+    roomId: Types.ObjectId;
 
     @Prop({ required: true })
     type: TransactionType;
@@ -30,14 +30,14 @@ export class Transaction {
 
     @Prop()
     date: Date;
-    @Prop({ ref: User.name, type: mongoose.Schema.Types.ObjectId })
-    addedBy: mongoose.Schema.Types.ObjectId;
+    @Prop({ ref: User.name, type: Types.ObjectId })
+    addedBy: Types.ObjectId;
 
     @Prop({ default: false })
     isDeleted: boolean;
 
-    @Prop({ ref: User.name, type: mongoose.Schema.Types.ObjectId })
-    deletedBy: mongoose.Schema.Types.ObjectId;
+    @Prop({ ref: User.name, type: Types.ObjectId })
+    deletedBy: Types.ObjectId;
 }
 
 export const TransactionSchema = SchemaFactory.createForClass(Transaction);

@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose from 'mongoose';
+import { Types } from 'mongoose';
 
 @Schema()
 class roomDetails {
-    @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'User' })
-    userId: mongoose.Schema.Types.ObjectId;
+    @Prop({ required: true, type: Types.ObjectId, ref: 'User' })
+    userId: Types.ObjectId;
 
     @Prop()
     name: string;
@@ -19,16 +19,22 @@ class roomDetails {
 export class TransactionRoom {
     @Prop({
         required: true,
-        type: [mongoose.Schema.Types.ObjectId],
+        type: [Types.ObjectId],
         validate: {
             validator: function (val: string | any[]) {
                 return val.length === 2;
             },
         },
     })
-    members: mongoose.Schema.Types.ObjectId[];
+    members: Types.ObjectId[];
 
-    @Prop()
+    @Prop({
+        validate: {
+            validator: function (val: string | any[]) {
+                return val.length === 2;
+            },
+        },
+    })
     roomDetails: roomDetails[];
 }
 

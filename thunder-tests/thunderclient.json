@@ -8,12 +8,12 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2023-05-11T08:10:31.609Z",
-    "modified": "2023-05-14T02:57:47.413Z",
+    "modified": "2023-05-15T00:51:26.600Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "{{token}}"
+      "bearer": "{{alt_token}}"
     },
     "tests": []
   },
@@ -94,12 +94,12 @@
     "method": "POST",
     "sortNum": 70000,
     "created": "2023-05-14T02:38:16.722Z",
-    "modified": "2023-05-14T02:57:31.347Z",
+    "modified": "2023-05-15T00:50:56.484Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"phone\": \"+919851305775\",\n  \"password\": \"Abcd@1234\"\n}",
+      "raw": "{\n  \"phone\": \"+917602904560\",\n  \"password\": \"Abcd@1234\"\n}",
       "form": []
     },
     "auth": {
@@ -117,17 +117,17 @@
     "method": "POST",
     "sortNum": 80000,
     "created": "2023-05-14T10:19:42.490Z",
-    "modified": "2023-05-14T10:57:31.397Z",
+    "modified": "2023-05-15T00:54:22.400Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Kaustav Da\",\n  \"phone\": \"+919851305775\"\n}",
+      "raw": "{\n  \"name\": \"Sayeed\",\n  \"phone\": \"+919851305775\"\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "{{token}}"
+      "bearer": "{{alt_token}}"
     },
     "tests": []
   }

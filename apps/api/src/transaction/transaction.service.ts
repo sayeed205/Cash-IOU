@@ -3,7 +3,6 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Query } from 'express-serve-static-core';
 import { Model, ObjectId } from 'mongoose';
 
-import { User } from 'src/auth/schemas/user.schema';
 import { createTransactionDto, updateTransactionDto } from './dto';
 import { Transaction } from './schemas/transaction.schema';
 
@@ -15,18 +14,18 @@ export class TransactionService {
     ) {}
 
     async findAll(query: Query): Promise<Transaction[]> {
-        console.log(query); // TODO)) add pagination after defining the user schema
+        console.log(query); // TODO)) add pagination after defining the user schema only give transactions of a room
         return await this.transactionModel.find();
     }
 
     async createTransaction(transactionInfo: {
-        user: User;
+        id: ObjectId;
         transaction: createTransactionDto;
     }) {
-        const { user, transaction } = transactionInfo;
+        const { id, transaction } = transactionInfo;
         const newTransaction = await this.transactionModel.create({
             ...transaction,
-            addedBy: user._id,
+            addedBy: id,
         });
         return newTransaction;
     }

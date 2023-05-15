@@ -30,8 +30,9 @@ export class TransactionRoomController {
         @Req()
         req: Request,
     ) {
+        const user = req.user as User;
         return await this.transactionRoomService.createTransactionRoom({
-            user: req.user as User,
+            id: user._id,
             name: transactionRoom.name,
             phone: transactionRoom.phone,
         });

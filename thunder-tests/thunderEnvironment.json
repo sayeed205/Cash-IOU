@@ -14,6 +14,10 @@
       {
         "name": "token",
         "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ2MGI3MGRkOTMwZDcwZDNiNmQzZTM5IiwiaWF0IjoxNjg0MDU5OTE3LCJleHAiOjE2ODQ2NjQ3MTd9.2BzG7I-BIspuupmW2HYeCow-mP_ZlJBn6qVtAiUBLUw"
+      },
+      {
+        "name": "alt_token",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ2MGI3MWRkOTMwZDcwZDNiNmQzZTNkIiwiaWF0IjoxNjg0MTExODU2LCJleHAiOjE2ODQ3MTY2NTZ9.Ih_9dYmiqdgnUoIATv0b_nQAeP25fi1YmWo845E-MOU"
       }
     ]
   }

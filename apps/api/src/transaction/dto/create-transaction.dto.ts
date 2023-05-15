@@ -5,13 +5,13 @@ import {
     IsNotEmpty,
     IsNumber,
 } from 'class-validator';
-import mongoose from 'mongoose';
+import { Types } from 'mongoose';
 import { TransactionType } from '../schemas/transaction.schema';
 
 export class createTransactionDto {
     @IsNotEmpty()
     @IsMongoId()
-    readonly roomId: mongoose.Schema.Types.ObjectId;
+    readonly roomId: Types.ObjectId;
 
     @IsEnum(TransactionType)
     readonly type: TransactionType;
