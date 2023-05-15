@@ -21,18 +21,14 @@ export class TransactionRoom {
         required: true,
         type: [Types.ObjectId],
         validate: {
-            validator: function (val: string | any[]) {
-                return val.length === 2;
-            },
+            validator: (val: string | Types.ObjectId[]) => val.length === 2,
         },
     })
     members: Types.ObjectId[];
 
     @Prop({
         validate: {
-            validator: function (val: string | any[]) {
-                return val.length === 2;
-            },
+            validator: (val: string | Types.ObjectId[]) => val.length <= 2,
         },
     })
     roomDetails: roomDetails[];

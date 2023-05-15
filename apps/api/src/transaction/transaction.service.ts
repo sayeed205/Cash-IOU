@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Query } from 'express-serve-static-core';
-import { Model, ObjectId } from 'mongoose';
+import { Model, Types } from 'mongoose';
 
 import { createTransactionDto, updateTransactionDto } from './dto';
+import { TransactionQueryDto } from './dto/transaction-query.dto';
 import { Transaction } from './schemas/transaction.schema';
 
 @Injectable()
@@ -13,13 +13,13 @@ export class TransactionService {
         private readonly transactionModel: Model<Transaction>,
     ) {}
 
-    async findAll(query: Query): Promise<Transaction[]> {
+    async findAll(query: TransactionQueryDto): Promise<Transaction[]> {
         console.log(query); // TODO)) add pagination after defining the user schema only give transactions of a room
-        return await this.transactionModel.find();
+        return await this.transactionModel.find({ roomId: query.roomId });
     }
 
     async createTransaction(transactionInfo: {
-        id: ObjectId;
+        id: Types.ObjectId;
         transaction: createTransactionDto;
     }) {
         const { id, transaction } = transactionInfo;
@@ -30,7 +30,7 @@ export class TransactionService {
         return newTransaction;
     }
 
-    async getTransaction(id: ObjectId): Promise<Transaction> {
+    async getTransaction(id: Types.ObjectId): Promise<Transaction> {
         const transaction = await this.transactionModel.findById(id);
         if (!transaction)
             throw new NotFoundException("Transaction doesn't exist!");
@@ -38,7 +38,7 @@ export class TransactionService {
     }
 
     async updateTransaction(
-        id: ObjectId,
+        id: Types.ObjectId,
         transaction: updateTransactionDto,
     ): Promise<Transaction> {
         const updatedTransaction =
@@ -51,7 +51,7 @@ export class TransactionService {
         return updatedTransaction;
     }
 
-    async deleteTransaction(id: ObjectId): Promise<Transaction> {
+    async deleteTransaction(id: Types.ObjectId): Promise<Transaction> {
         const deletedTransaction =
             await this.transactionModel.findByIdAndDelete(id);
 

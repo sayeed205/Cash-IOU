@@ -29,6 +29,7 @@ export class TransactionRoomService {
                 await this.transactionRoomModel.findOne({
                     members: { $all: [id, userExists._id] },
                 });
+            console.log('transactionRoomExists', transactionRoomExists);
 
             // If transaction room exists, and check roomDetails for the user
             if (transactionRoomExists) {
@@ -78,13 +79,13 @@ export class TransactionRoomService {
         return newTransactionRoom;
     }
 
-    async getAllTransactionRooms(user: User) {
+    async getAllTransactionRooms(id: Types.ObjectId) {
         // Find all transaction rooms where the given user is a member in the members array
         const transactionRooms = await this.transactionRoomModel.find({
-            members: { $in: [user] },
+            members: { $in: [id] },
         });
 
         // Return the transaction rooms
-        return transactionRooms; // TODO)): add pagination
+        return transactionRooms; // TODO)): add pagination and aggregate with proper room details
     }
 }

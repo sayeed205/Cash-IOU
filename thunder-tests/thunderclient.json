@@ -4,13 +4,24 @@
     "colId": "72da743f-0e69-4866-bd34-1cba363db2fe",
     "containerId": "8f8f699b-44b0-4997-adbc-a5a673ed9648",
     "name": "Get all transactions",
-    "url": "{{URL}}/api/transactions",
+    "url": "{{URL}}/api/transactions?roomId=6460b71dd930d70d3b6d3e3f&page=2",
     "method": "GET",
     "sortNum": 10000,
     "created": "2023-05-11T08:10:31.609Z",
-    "modified": "2023-05-15T00:51:26.600Z",
+    "modified": "2023-05-15T02:24:34.736Z",
     "headers": [],
-    "params": [],
+    "params": [
+      {
+        "name": "roomId",
+        "value": "6460b71dd930d70d3b6d3e3f",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "2",
+        "isPath": false
+      }
+    ],
     "auth": {
       "type": "bearer",
       "bearer": "{{alt_token}}"
@@ -117,14 +128,32 @@
     "method": "POST",
     "sortNum": 80000,
     "created": "2023-05-14T10:19:42.490Z",
-    "modified": "2023-05-15T00:54:22.400Z",
+    "modified": "2023-05-15T01:29:57.355Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Sayeed\",\n  \"phone\": \"+919851305775\"\n}",
+      "raw": "{\n  \"name\": \"Rajib Kaka\",\n  \"phone\": \"+916295605592\"\n}",
       "form": []
     },
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{token}}"
+    },
+    "tests": []
+  },
+  {
+    "_id": "ca900710-75bb-4be8-96b9-3fbb90bae4ec",
+    "colId": "72da743f-0e69-4866-bd34-1cba363db2fe",
+    "containerId": "56b704b7-a33b-4d7b-adf3-f86adb44a808",
+    "name": "Get all rooms",
+    "url": "{{URL}}/api/transaction-room/all",
+    "method": "GET",
+    "sortNum": 90000,
+    "created": "2023-05-15T01:29:18.302Z",
+    "modified": "2023-05-15T01:48:57.510Z",
+    "headers": [],
+    "params": [],
     "auth": {
       "type": "bearer",
       "bearer": "{{alt_token}}"

@@ -1,6 +1,19 @@
-import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
+import {
+    ArgumentsHost,
+    BadRequestException,
+    Catch,
+    ExceptionFilter,
+} from '@nestjs/common';
 import { Request, Response } from 'express';
-import { MongoIdException } from './mongo-id.exception';
+
+export class MongoIdException extends BadRequestException {
+    constructor(public readonly value: string) {
+        const message = value
+            ? `'${value}' is not a valid MongoId`
+            : 'Please provide a MongoId';
+        super(message);
+    }
+}
 
 @Catch(MongoIdException)
 export class MongoIdExceptionFilter implements ExceptionFilter {

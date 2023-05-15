@@ -9,10 +9,10 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Request } from 'express';
+import { Types } from 'mongoose';
 
-import { ObjectId } from 'mongoose';
 import { User } from 'src/auth/schemas/user.schema';
-import { ValidateMongoId } from 'src/pipes/validate-mongo-id';
+import { ValidateMongoId } from 'src/pipes';
 import { createTransactionRoomDto } from './dto';
 import { TransactionRoomService } from './transaction-room.service';
 
@@ -40,12 +40,18 @@ export class TransactionRoomController {
 
     @Get('all')
     @UseGuards(AuthGuard())
-    async getAllTransactionRooms() {}
+    async getAllTransactionRooms(
+        @Req()
+        req: Request,
+    ) {
+        const { _id } = req.user as User;
+        return await this.transactionRoomService.getAllTransactionRooms(_id);
+    }
 
     @Get(':id')
     @UseGuards(AuthGuard())
     async getTransactionRoom(
         @Param('id', ValidateMongoId)
-        id: ObjectId,
+        id: Types.ObjectId,
     ) {}
 }

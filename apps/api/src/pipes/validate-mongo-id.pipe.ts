@@ -1,6 +1,6 @@
 import { Injectable, PipeTransform } from '@nestjs/common';
 import { isValidObjectId } from 'mongoose';
-import { MongoIdException } from 'src/exceptions/mongo-id.exception';
+import { MongoIdException } from 'src/exceptions';
 
 @Injectable()
 export class ValidateMongoId implements PipeTransform<string> {

@@ -33,7 +33,19 @@ import { TransactionModule } from './transaction/transaction.module';
         AuthModule,
     ],
     controllers: [AppController],
-    providers: [AppService, { provide: APP_PIPE, useClass: ValidationPipe }],
+    providers: [
+        AppService,
+        {
+            provide: APP_PIPE,
+            useFactory() {
+                return new ValidationPipe({
+                    transform: true,
+                    forbidNonWhitelisted: true,
+                    transformOptions: { enableImplicitConversion: true },
+                });
+            },
+        },
+    ],
 })
 export class AppModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {

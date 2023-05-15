@@ -12,12 +12,15 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Request } from 'express';
-import { Query as query } from 'express-serve-static-core';
-import { ObjectId } from 'mongoose';
+import { Types } from 'mongoose';
 
 import { User } from 'src/auth/schemas/user.schema';
-import { ValidateMongoId } from 'src/pipes/validate-mongo-id';
-import { createTransactionDto, updateTransactionDto } from './dto';
+import { ValidateMongoId } from 'src/pipes';
+import {
+    TransactionQueryDto,
+    createTransactionDto,
+    updateTransactionDto,
+} from './dto';
 import { TransactionService } from './transaction.service';
 
 @Controller('transactions')
@@ -26,9 +29,14 @@ export class TransactionController {
 
     @Get()
     @UseGuards(AuthGuard())
-    async findAll(
+    async getAllTransaction(
         @Query()
-        query: query,
+        query: // new ValidationPipe({
+        //     transform: true,
+        //     forbidNonWhitelisted: true,
+        //     transformOptions: { enableImplicitConversion: true },
+        // }),
+        TransactionQueryDto,
     ) {
         return await this.transactionService.findAll(query); // TODO)) add pagination after defining the user schema
     }
@@ -41,16 +49,17 @@ export class TransactionController {
         @Req()
         req: Request,
     ) {
+        const { id } = req.user as User;
         return await this.transactionService.createTransaction({
             transaction,
-            user: req.user as User,
+            id,
         });
     }
 
     @Get(':id')
     async getTransaction(
         @Param('id', ValidateMongoId)
-        id: ObjectId,
+        id: Types.ObjectId,
     ) {
         return await this.transactionService.getTransaction(id);
     }
@@ -58,7 +67,7 @@ export class TransactionController {
     @Patch(':id')
     async updateTransaction(
         @Param('id', ValidateMongoId)
-        id: ObjectId,
+        id: Types.ObjectId,
         @Body()
         transaction: updateTransactionDto,
     ) {
@@ -68,7 +77,7 @@ export class TransactionController {
     @Delete(':id')
     async deleteTransaction(
         @Param('id', ValidateMongoId)
-        id: ObjectId,
+        id: Types.ObjectId,
     ) {
         return await this.transactionService.deleteTransaction(id);
     }
