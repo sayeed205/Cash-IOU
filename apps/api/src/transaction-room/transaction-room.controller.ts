@@ -8,6 +8,13 @@ import {
     UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import {
+    ApiBadRequestResponse,
+    ApiBearerAuth,
+    ApiCreatedResponse,
+    ApiTags,
+    ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
 import { Request } from 'express';
 import { Types } from 'mongoose';
 
@@ -17,13 +24,18 @@ import { createTransactionRoomDto } from './dto';
 import { TransactionRoomService } from './transaction-room.service';
 
 @Controller('transaction-room')
+@ApiTags('Transaction Room')
+@UseGuards(AuthGuard())
+@ApiBearerAuth()
 export class TransactionRoomController {
     constructor(
         private readonly transactionRoomService: TransactionRoomService,
     ) {}
 
     @Post()
-    @UseGuards(AuthGuard())
+    @ApiUnauthorizedResponse({ description: 'Unauthorized' })
+    @ApiCreatedResponse({ description: 'Transaction Room Created' })
+    @ApiBadRequestResponse({ description: 'Bad Request' })
     async createTransactionRoom(
         @Body()
         transactionRoom: createTransactionRoomDto,
@@ -39,7 +51,6 @@ export class TransactionRoomController {
     }
 
     @Get('all')
-    @UseGuards(AuthGuard())
     async getAllTransactionRooms(
         @Req()
         req: Request,
@@ -49,7 +60,6 @@ export class TransactionRoomController {
     }
 
     @Get(':id')
-    @UseGuards(AuthGuard())
     async getTransactionRoom(
         @Param('id', ValidateMongoId)
         id: Types.ObjectId,

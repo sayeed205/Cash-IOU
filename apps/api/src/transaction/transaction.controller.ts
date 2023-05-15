@@ -11,6 +11,12 @@ import {
     UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import {
+    ApiBearerAuth,
+    ApiCreatedResponse,
+    ApiOkResponse,
+    ApiTags,
+} from '@nestjs/swagger';
 import { Request } from 'express';
 import { Types } from 'mongoose';
 
@@ -24,25 +30,24 @@ import {
 import { TransactionService } from './transaction.service';
 
 @Controller('transactions')
+@ApiTags('Transactions')
+@ApiBearerAuth()
+@UseGuards(AuthGuard())
 export class TransactionController {
     constructor(private readonly transactionService: TransactionService) {}
 
     @Get()
-    @UseGuards(AuthGuard())
+    // @ApiSecurity('jwt')
+    @ApiOkResponse({ description: 'Transactions fetched successfully' })
     async getAllTransaction(
         @Query()
-        query: // new ValidationPipe({
-        //     transform: true,
-        //     forbidNonWhitelisted: true,
-        //     transformOptions: { enableImplicitConversion: true },
-        // }),
-        TransactionQueryDto,
+        query: TransactionQueryDto,
     ) {
         return await this.transactionService.findAll(query); // TODO)) add pagination after defining the user schema
     }
 
     @Post()
-    @UseGuards(AuthGuard())
+    @ApiCreatedResponse({ description: 'Transaction created successfully' })
     async createTransaction(
         @Body()
         transaction: createTransactionDto,
@@ -57,6 +62,8 @@ export class TransactionController {
     }
 
     @Get(':id')
+    @ApiOkResponse({ description: 'Transaction fetched successfully' })
+    // @ApiNor
     async getTransaction(
         @Param('id', ValidateMongoId)
         id: Types.ObjectId,

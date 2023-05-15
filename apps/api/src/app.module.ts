@@ -1,3 +1,4 @@
+import { MorganMiddleware } from '@nest-middlewares/morgan';
 import {
     MiddlewareConsumer,
     Module,
@@ -10,7 +11,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 
-import { MorganMiddleware } from '@nest-middlewares/morgan';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';

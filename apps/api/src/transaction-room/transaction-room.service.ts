@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 import { User } from 'src/auth/schemas/user.schema';
-import { TransactionRoom } from './schemas/transaction-room.schema';
+import { TransactionRoom } from './schemas';
 
 @Injectable()
 export class TransactionRoomService {

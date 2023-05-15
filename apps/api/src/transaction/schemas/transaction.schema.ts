@@ -1,9 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 // import { Schema as MongooseSchema, ObjectId } from 'mongoose';
 import { Types } from 'mongoose';
-
-import { User } from 'src/auth/schemas/user.schema';
-import { TransactionRoom } from 'src/transaction-room/schemas/transaction-room.schema';
+import { User } from 'src/auth/schemas';
+import { TransactionRoom } from 'src/transaction-room/schemas';
 
 export enum TransactionType {
     Credit = 'credit',

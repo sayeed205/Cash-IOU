@@ -61,13 +61,12 @@ export class AuthService {
 
         // Check if user with phone number already exists as registered user
         const user = await this.userModel.findOne({ phone, isReal: true });
-        if (!user)
-            throw new UnauthorizedException('phone or password is invalid');
+        if (!user) throw new UnauthorizedException('Invalid credentials');
 
         // Check if password is correct
         const isPasswordCorrect = await user.comparePassword(password);
         if (!isPasswordCorrect)
-            throw new UnauthorizedException('phone or password is invalid');
+            throw new UnauthorizedException('Invalid credentials');
 
         // Send jwt token back to user
         const token = this.jwtService.sign({ user_id: user._id });
