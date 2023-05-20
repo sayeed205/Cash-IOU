@@ -1,0 +1,66 @@
+.input-box {
+    position: relative;
+    width: fit-content;
+    margin: 0.5rem 0;
+    height: 70px;
+}
+
+.input-box input {
+    width: 16rem;
+    background-color: var(--surface-container-highest);
+    color: var(--on-surface);
+    border: 1px solid var(--surface-container-highest);
+    border-radius: 20px;
+    padding-left: 1rem;
+    font-size: 1rem;
+    outline: none;
+    height: 40px;
+}
+
+.input-box label {
+    color: var(--outline);
+    position: absolute;
+    left: 0;
+    top: 10px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    transition: position 5s, text-transform 5s, transform 0.5s, border 5s,
+        color 5s;
+    border-radius: 20px;
+    pointer-events: none;
+    text-transform: capitalize;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+    border: 1px solid var(--primary);
+    transform: translateY(-90%) scale(0.8) translateX(0px);
+    text-align: center;
+    left: 0;
+    right: 0;
+    max-width: 16rem;
+    min-width: max-content;
+    transition: transform 0.5s, border 5s, color 5s;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--surface-container-highest);
+}
+
+.input-box input:focus {
+    border: 1px solid var(--primary);
+}
+
+.input-box input:focus ~ .error-info {
+    border: 1px solid var(--error);
+}
+
+.input-box .error {
+    border: 1px solid var(--error) !important;
+    color: var(--error);
+    background-color: var(--surface-container-highest);
+}
+
+.input-box .error-info {
+    color: var(--error);
+    position: absolute;
+}
