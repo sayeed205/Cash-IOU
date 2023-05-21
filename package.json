@@ -7,12 +7,10 @@
         "dev:api": "nx serve api",
         "dev:client": "nx serve client",
         "dev": "nx run-many --target=serve",
-        "build:api": "nx build api",
+        "build": "nx build api",
         "build:client": "nx build client",
-        "build": "nx run-many --target=build",
-        "start:api": "node dist/apps/api/main.js",
-        "start:client": "next start dist/apps/client",
-        "start": "concurrently \"npm run start:api\" \"npm run start:client\""
+        "start": "node dist/apps/api/main.js",
+        "start:client": "next start dist/apps/client"
     },
     "private": true,
     "dependencies": {
@@ -26,7 +24,6 @@
         "@nestjs/platform-express": "^9.4.1",
         "axios": "^1.4.0",
         "bcryptjs": "^2.4.3",
-        "concurrently": "^8.0.1",
         "helmet": "^6.0.1",
         "next": "^13.4.3",
         "passport-jwt": "^4.0.1",

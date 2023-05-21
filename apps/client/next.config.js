@@ -13,10 +13,15 @@ const nextConfig = {
         svgr: false,
     },
     async rewrites() {
+        const backendUrl = process.env.BACKEND_URL;
+        if (!backendUrl) {
+            throw new Error('BACKEND_URL is not set');
+        }
+
         return [
             {
                 source: '/api/:path*',
-                destination: 'http://localhost:5000/api/:path*', // Proxy to Backend
+                destination: `${backendUrl}/api/:path*`,
             },
         ];
     },
