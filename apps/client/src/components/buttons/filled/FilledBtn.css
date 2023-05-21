@@ -18,11 +18,11 @@
 .button-filled:hover {
     /* background-color: var(--surface-container-low); */
     opacity: 0.9;
-    // elevete the button
+    /* elevete the button */
     /* box-shadow: 0 2px 3px 0 var(--shadow); */
 }
 
 .button-filled:disabled {
-    /* background-color: var(--primary); */ // TODO)): disabled color
+    /* background-color: var(--primary);  TODO)): disabled color */
     cursor: not-allowed;
 }
