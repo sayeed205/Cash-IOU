@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { PassportStrategy } from '@nestjs/passport';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { ExtractJwt, Strategy as jwtStrategy } from 'passport-jwt';
 import { User } from './schemas/user.schema';
 
@@ -17,7 +17,7 @@ export class JwtStrategy extends PassportStrategy(jwtStrategy) {
         });
     }
 
-    async validate(payload: any) {
+    async validate(payload: { user_id: string | Types.ObjectId }) {
         const { user_id } = payload;
         const user = await this.userModel.findById(user_id);
         if (!user) throw new UnauthorizedException('Login required');

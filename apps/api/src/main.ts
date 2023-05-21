@@ -1,12 +1,15 @@
+import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import helmet from 'helmet';
-import { AppModule } from './app.module';
+import { AppModule } from './app/app.module';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
     app.use(helmet());
-    app.setGlobalPrefix('/api');
+
+    const globalPrefix = 'api';
+    app.setGlobalPrefix(globalPrefix);
 
     // Swagger config for API documentation only in development
     if (process.env.NODE_ENV !== 'production') {
@@ -20,7 +23,15 @@ async function bootstrap() {
         const document = SwaggerModule.createDocument(app, options);
         SwaggerModule.setup('api/docs', app, document);
     }
-    await app.listen(process.env.PORT || 5000);
+
+    const PORT = process.env.PORT || 5000;
+    await app.listen(PORT);
+
+    if (process.env.NODE_ENV !== 'production') {
+        Logger.log(
+            `🚀 Application is running on: http://localhost:${PORT}/${globalPrefix}`,
+        );
+    }
 }
 
 bootstrap();

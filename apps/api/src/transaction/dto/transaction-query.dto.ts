@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
 import { IsInt, IsNotEmpty, IsString } from 'class-validator';
 import { Types } from 'mongoose';
-import { IsValidMongoId } from 'src/common/decorators';
+import { IsValidMongoId } from '../../common/decorators';
 
 export class TransactionQueryDto {
     @IsNotEmpty()
@@ -23,7 +23,7 @@ export class TransactionQueryDto {
         default: 1,
         required: false,
     })
-    page: number = 1;
+    page = 1;
 
     @Transform(({ value }) => parseInt(value))
     @IsInt()
@@ -33,7 +33,7 @@ export class TransactionQueryDto {
         default: 10,
         required: false,
     })
-    limit: number = 10;
+    limit = 10;
 
     @IsString()
     @ApiProperty({
@@ -41,5 +41,5 @@ export class TransactionQueryDto {
         example: 'dinner',
         required: false,
     })
-    q: string = '';
+    q = '';
 }

@@ -14,7 +14,7 @@ export class TransactionService {
     ) {}
 
     async findAll(query: TransactionQueryDto): Promise<Transaction[]> {
-        console.log(query); // TODO)) add pagination after defining the user schema only give transactions of a room
+        // TODO)) add pagination after defining the user schema only give transactions of a room
         return await this.transactionModel.find({ roomId: query.roomId });
     }
 

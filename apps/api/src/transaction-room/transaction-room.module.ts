@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
-import { AuthModule } from 'src/auth/auth.module';
-import { User, UserSchema } from 'src/auth/schemas/user.schema';
+import { AuthModule } from '../auth/auth.module';
+import { User, UserSchema } from '../auth/schemas/user.schema';
 
 import { TransactionRoom, TransactionRoomSchema } from './schemas';
 import { TransactionRoomController } from './transaction-room.controller';
