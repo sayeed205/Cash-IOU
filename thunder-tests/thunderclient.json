@@ -86,12 +86,12 @@
     "method": "POST",
     "sortNum": 60000,
     "created": "2023-05-12T10:20:49.185Z",
-    "modified": "2023-05-14T10:57:05.189Z",
+    "modified": "2023-05-21T05:45:58.267Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Kaustav\",\n  \"phone\": \"+917602904560\",\n  \"password\": \"Abcd@1234\"\n}",
+      "raw": "{\n  \"name\": \"Rahul Mukharjee\",\n  \"phone\": \"+918617008081\",\n  \"password\": \"Abcd@1234\"\n}",
       "form": []
     },
     "tests": []
@@ -105,12 +105,12 @@
     "method": "POST",
     "sortNum": 70000,
     "created": "2023-05-14T02:38:16.722Z",
-    "modified": "2023-05-15T00:50:56.484Z",
+    "modified": "2023-05-21T05:46:16.964Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"phone\": \"+917602904560\",\n  \"password\": \"Abcd@1234\"\n}",
+      "raw": "{\n  \"phone\": \"+918617008081\",\n  \"password\": \"Abcd@1234\"\n}",
       "form": []
     },
     "auth": {

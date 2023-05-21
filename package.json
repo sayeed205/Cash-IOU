@@ -1,41 +1,101 @@
 {
-  "name": "cash-iou",
-  "version": "0.1.0",
-  "description": "A simple PWA and SPA to track your lending money",
-  "main": "main.js",
-  "workspaces": [
-    "apps/*"
-  ],
-  "scripts": {
-    "dev": "turbo run dev",
-    "build": "turbo run build",
-    "prestart": "turbo run build",
-    "start": "node apps/api/dist/main"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sayeed205/Cash-IOU.git"
-  },
-  "keywords": [
-    "SPA",
-    "PWA",
-    "monorepo",
-    "turbo",
-    "nestJS",
-    "reactJS",
-    "track",
-    "lending"
-  ],
-  "author": {
-    "name": "Sayed Ahmed",
-    "email": "sayeed205@gmail.com"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sayeed205/Cash-IOU/issues"
-  },
-  "homepage": "https://github.com/sayeed205/Cash-IOU#readme",
-  "devDependencies": {
-    "turbo": "^1.9.4"
-  }
+    "name": "cash-iou",
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "A simple PWA and SPA to track your lending money",
+    "scripts": {
+        "dev:api": "nx serve api",
+        "dev:client": "nx serve client",
+        "dev": "nx run-many --target=serve",
+        "build:api": "nx build api",
+        "build:client": "nx build client",
+        "build": "nx run-many --target=build "
+    },
+    "private": true,
+    "dependencies": {
+        "@nest-middlewares/morgan": "^7.0.1",
+        "@nestjs/common": "^9.4.1",
+        "@nestjs/config": "^2.3.1",
+        "@nestjs/core": "^9.4.1",
+        "@nestjs/jwt": "^10.0.3",
+        "@nestjs/mongoose": "^9.2.2",
+        "@nestjs/passport": "^9.0.3",
+        "@nestjs/platform-express": "^9.4.1",
+        "axios": "^1.4.0",
+        "bcryptjs": "^2.4.3",
+        "helmet": "^6.0.1",
+        "next": "^13.4.3",
+        "passport-jwt": "^4.0.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "reflect-metadata": "^0.1.13",
+        "rxjs": "^7.8.1",
+        "tslib": "^2.5.2"
+    },
+    "devDependencies": {
+        "@nestjs/schematics": "^9.2.0",
+        "@nestjs/swagger": "^6.3.0",
+        "@nestjs/testing": "^9.4.1",
+        "@nx/cypress": "^16.2.1",
+        "@nx/eslint-plugin": "^16.2.1",
+        "@nx/jest": "^16.2.1",
+        "@nx/js": "^16.2.1",
+        "@nx/linter": "^16.2.1",
+        "@nx/nest": "^16.2.1",
+        "@nx/next": "^16.2.1",
+        "@nx/node": "^16.2.1",
+        "@nx/react": "^16.2.1",
+        "@nx/webpack": "^16.2.1",
+        "@nx/workspace": "^16.2.1",
+        "@testing-library/react": "^14.0.0",
+        "@types/bcryptjs": "^2.4.2",
+        "@types/jest": "^29.5.1",
+        "@types/node": "^20.2.1",
+        "@types/passport-jwt": "^3.0.8",
+        "@types/react": "^18.2.6",
+        "@types/react-dom": "^18.2.4",
+        "@typescript-eslint/eslint-plugin": "^5.59.6",
+        "@typescript-eslint/parser": "^5.59.6",
+        "babel-jest": "^29.5.0",
+        "cypress": "^12.12.0",
+        "eslint": "^8.41.0",
+        "eslint-config-next": "^13.4.3",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-plugin-cypress": "^2.13.3",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-jsx-a11y": "^6.7.1",
+        "eslint-plugin-react": "^7.32.2",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "jest": "^29.5.0",
+        "jest-environment-jsdom": "^29.5.0",
+        "jest-environment-node": "^29.5.0",
+        "nx": "^16.2.1",
+        "nx-cloud": "^16.0.5",
+        "prettier": "^2.8.8",
+        "ts-jest": "^29.1.0",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.0.4"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sayeed205/Cash-IOU.git"
+    },
+    "keywords": [
+        "SPA",
+        "PWA",
+        "monorepo",
+        "turbo",
+        "nestJS",
+        "reactJS",
+        "track",
+        "lending"
+    ],
+    "author": {
+        "name": "Sayed Ahmed",
+        "email": "sayeed205@gmail.com"
+    },
+    "bugs": {
+        "url": "https://github.com/sayeed205/Cash-IOU/issues"
+    },
+    "homepage": "https://github.com/sayeed205/Cash-IOU#readme"
 }

@@ -7,7 +7,6 @@ import {
     Patch,
     Post,
     Query,
-    Req,
     UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
@@ -17,11 +16,11 @@ import {
     ApiOkResponse,
     ApiTags,
 } from '@nestjs/swagger';
-import { Request } from 'express';
 import { Types } from 'mongoose';
 
-import { User } from 'src/auth/schemas/user.schema';
-import { ValidateMongoId } from 'src/pipes';
+import { User } from '../auth/schemas/user.schema';
+import { GetUser } from '../common/decorators';
+import { ValidateMongoId } from '../pipes';
 import {
     TransactionQueryDto,
     createTransactionDto,
@@ -37,7 +36,6 @@ export class TransactionController {
     constructor(private readonly transactionService: TransactionService) {}
 
     @Get()
-    // @ApiSecurity('jwt')
     @ApiOkResponse({ description: 'Transactions fetched successfully' })
     async getAllTransaction(
         @Query()
@@ -51,13 +49,12 @@ export class TransactionController {
     async createTransaction(
         @Body()
         transaction: createTransactionDto,
-        @Req()
-        req: Request,
+        @GetUser()
+        user: User,
     ) {
-        const { id } = req.user as User;
         return await this.transactionService.createTransaction({
             transaction,
-            id,
+            id: user.id,
         });
     }
 

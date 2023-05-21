@@ -7,7 +7,7 @@ import {
     IsNumber,
 } from 'class-validator';
 import { Types } from 'mongoose';
-import { TransactionType } from 'src/transaction/schemas';
+import { TransactionType } from '../schemas';
 
 export class createTransactionDto {
     @IsNotEmpty()

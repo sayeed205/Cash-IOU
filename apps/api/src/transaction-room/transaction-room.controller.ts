@@ -1,12 +1,4 @@
-import {
-    Body,
-    Controller,
-    Get,
-    Param,
-    Post,
-    Req,
-    UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import {
     ApiBadRequestResponse,
@@ -15,11 +7,11 @@ import {
     ApiTags,
     ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { Request } from 'express';
 import { Types } from 'mongoose';
 
-import { User } from 'src/auth/schemas/user.schema';
-import { ValidateMongoId } from 'src/pipes';
+import { User } from '../auth/schemas/user.schema';
+import { GetUser } from '../common/decorators';
+import { ValidateMongoId } from '../pipes';
 import { createTransactionRoomDto } from './dto';
 import { TransactionRoomService } from './transaction-room.service';
 
@@ -39,10 +31,9 @@ export class TransactionRoomController {
     async createTransactionRoom(
         @Body()
         transactionRoom: createTransactionRoomDto,
-        @Req()
-        req: Request,
+        @GetUser()
+        user: User,
     ) {
-        const user = req.user as User;
         return await this.transactionRoomService.createTransactionRoom({
             id: user._id,
             name: transactionRoom.name,
@@ -52,10 +43,10 @@ export class TransactionRoomController {
 
     @Get('all')
     async getAllTransactionRooms(
-        @Req()
-        req: Request,
+        @GetUser()
+        user: User,
     ) {
-        const { _id } = req.user as User;
+        const _id = user._id;
         return await this.transactionRoomService.getAllTransactionRooms(_id);
     }
 
